@@ -57,8 +57,8 @@ void Make_Rect(struct SVGRect * rect, FILE * f)//function to write all the detai
 
 struct SVGCircle//structure for storing the details of a circle
 {
-    int circle_x;//the x of the circle,
-    int circle_y;
+    int circle_x;//the x of the circle
+    int circle_y;//the y of the circle
     int circle_rad;//radius of the circle
     int circle_stroke[3];//the color of the boundary of the circle
     int circle_stroke_width;//width of the boundary of the circle
@@ -83,7 +83,7 @@ void Init_Circle(struct SVGCircle * circle)//same thing, initializing all the va
     circle->circle_stroke_opacity = 0.0;
 }
 
-void Make_Circle(struct SVGCircle * circle, FILE * f)
+void Make_Circle(struct SVGCircle * circle, FILE * f)//function to write the circle details in an SVG file
 {
     fprintf(f,
             "<circle cx=\"%d\" cy=\"%d\" r=\"%d\" stroke=\"rgb(%d, %d, %d)\" stroke-width=\"%d\" fill=\"rgb(%d, %d, %d)\" fill-opacity=\"%f\" stroke-opacity=\"%f\"/>\n",
