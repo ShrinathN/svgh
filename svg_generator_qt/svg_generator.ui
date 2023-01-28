@@ -206,6 +206,8 @@
   <tabstop>spinBox_width</tabstop>
   <tabstop>spinBox_height</tabstop>
   <tabstop>spinBox_elements</tabstop>
+  <tabstop>spinBox_minstroke</tabstop>
+  <tabstop>spinBox_maxstroke</tabstop>
   <tabstop>radioButton_random</tabstop>
   <tabstop>radioButton_rectangle</tabstop>
   <tabstop>radioButton_circle</tabstop>

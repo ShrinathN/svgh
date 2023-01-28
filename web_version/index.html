@@ -1,0 +1,135 @@
+<html>
+
+<head>
+	<title>SVG Image Generator</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous"></script>
+	<!-- SVG Related Functions -->
+	<script src="RandomSvgGenerator.js"></script>
+
+	<script>
+		var g = new RandomSvgGeneratorClass();
+
+		function genr() {
+			var svg_image = document.getElementById("svg_image");
+
+			g.set_random_checked(document.getElementById("btnradio0").checked);
+			g.set_rectangle_checked(document.getElementById("btnradio1").checked);
+			g.set_circle_checked(document.getElementById("btnradio2").checked);
+			g.set_ellipse_checked(document.getElementById("btnradio3").checked);
+			g.set_line_checked(document.getElementById("btnradio4").checked);
+			g.set_polygon_checked(document.getElementById("btnradio5").checked);
+			g.set_polyline_checked(document.getElementById("btnradio6").checked);
+			g.set_curve_checked(document.getElementById("btnradio7").checked);
+			g.set_gradient_checked(document.getElementById("btnradio8").checked);
+
+			g.set_width(Number(document.getElementById("width_input").value));
+			g.set_height(Number(document.getElementById("height_input").value));
+			g.set_elements(Number(document.getElementById("elements_number").value));
+			g.set_strokes(Number(document.getElementById("stroke_min").value), Number(document.getElementById("stroke_max").value));
+
+
+			g.generate_image();
+			svg_image.innerHTML = g.return_image();
+		}
+
+		function save_img() {
+			g.save_image()
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col">
+				<div id="svg_image" class="col-12 align-self-center">
+					<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1920" height="1080"></svg>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="input-group">
+					<span class="input-group-text">Width and Height</span>
+					<input id="width_input" type="text" value="1920" class="form-control">
+					<input id="height_input" type="text" value="1080" class="form-control">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="input-group">
+					<span class="input-group-text">Number of Shapes</span>
+					<input id="elements_number" type="text" value="2" class="form-control">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="input-group">
+					<span class="input-group-text">Lines' stroke width range</span>
+					<input id="stroke_min" type="text" value="25" class="form-control">
+					<input id="stroke_max" type="text" value="50" class="form-control">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio0" autocomplete="off">
+					<label class="btn btn-outline-primary" for="btnradio0">Random</label>
+
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
+					<label class="btn btn-outline-primary" for="btnradio1">Rectangle</label>
+
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+					<label class="btn btn-outline-primary" for="btnradio2">Circle</label>
+
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+					<label class="btn btn-outline-primary" for="btnradio3">Ellipse</label>
+
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+					<label class="btn btn-outline-primary" for="btnradio4">Line</label>
+
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
+					<label class="btn btn-outline-primary" for="btnradio5">Polygon</label>
+
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off" checked>
+					<label class="btn btn-outline-primary" for="btnradio6">Polyline</label>
+
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio7" autocomplete="off">
+					<label class="btn btn-outline-primary" for="btnradio7">Curve</label>
+
+					<input type="radio" class="btn-check" name="btnradio" id="btnradio8" autocomplete="off">
+					<label class="btn btn-outline-primary" for="btnradio8">Gradient</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<button class="btn btn-secondary" onclick="genr()">Generate Image</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<button class="btn btn-danger" onclick="save_img()">Save Image</button>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+</html>

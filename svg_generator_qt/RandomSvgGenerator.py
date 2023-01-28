@@ -19,6 +19,23 @@ class RandomSvgGeneratorClass:
         self.gradient_checked = False
         self.min_stroke = 1
         self.max_stroke = 100
+    
+    def __del__(self) -> None:
+        del(self.__svg_data)
+        del(self.width)
+        del(self.height)
+        del(self.elements_set)
+        del(self.random_checked)
+        del(self.rectangle_checked)
+        del(self.circle_checked)
+        del(self.ellipse_checked)
+        del(self.line_checked)
+        del(self.polygon_checked)
+        del(self.polyline_checked)
+        del(self.curve_checked)
+        del(self.gradient_checked)
+        del(self.min_stroke)
+        del(self.max_stroke)
 
     def set_width(self, width) -> None:
         self.width = width
@@ -85,6 +102,8 @@ class RandomSvgGeneratorClass:
                     self.__svg_data += self.__add_random_polyline()
                 elif (choice == 6):
                     self.__svg_data += self.__add_random_curve()
+                
+                del(choice)
 
             if (self.rectangle_checked):
                 self.__svg_data += self.__add_random_rectangle()
@@ -194,6 +213,7 @@ class RandomSvgGeneratorClass:
                 str(random.randint(0, self.width)),  # point x
                 str(random.randint(0, self.height))  # point y
             )
+        del(number_of_sides)
         string_to_return += '{},{}" fill="rgb({},{},{})" stroke="rgb({},{},{})" stroke-width="{}"/>'.format(
             str(random.randint(0, self.width)),  # end point x
             str(random.randint(0, self.height)),  # end point y
@@ -215,6 +235,7 @@ class RandomSvgGeneratorClass:
                 str(random.randint(0, self.width)),  # point x
                 str(random.randint(0, self.height))  # point y
             )
+        del(number_of_points)
         string_to_return += '{},{}" fill="none" stroke="rgb({},{},{})" stroke-width="{}"/>'.format(
             str(random.randint(0, self.width)),  # end point x
             str(random.randint(0, self.height)),  # end point y
@@ -236,6 +257,7 @@ class RandomSvgGeneratorClass:
                 str(random.randint(0, self.width//2)),  # point x
                 str(random.randint(0, self.height//2))  # point y
             )
+        del(number_of_points)
         string_to_return += 'Z" fill="rgb({},{},{})" stroke="rgb({},{},{})" stroke-width="{}"/>'.format(
             str(random.randint(0, 255)),  # fill red
             str(random.randint(0, 255)),  # fill green

@@ -4,7 +4,7 @@ from PyQt5 import uic, QtCore, QtWidgets, QtGui
 from PyQt5 import *
 from PyQt5.QtCore import QCoreApplication, QObject, QThread
 from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QGraphicsView
 import sys
 from PyQt5.QtSvg import QSvgWidget, QSvgRenderer
 from RandomSvgGenerator import RandomSvgGeneratorClass
@@ -19,6 +19,7 @@ class Ui(QtWidgets.QWidget):
 		uic.loadUi('svg_generator.ui', self)
 		self.pushButton_generate.clicked.connect(self.generate_image)
 		self.pushButton_save.clicked.connect(self.save_image)
+		self.gv = QGraphicsView(self.graphicsView)
 		self.image_data_str = ''
 		self.show()
 
@@ -67,10 +68,12 @@ class Ui(QtWidgets.QWidget):
 		self.image_data_str = randomSvgGeneratorClass.return_image()
 		self.draw_svg(self.image_data_str)
 
+		del(randomSvgGeneratorClass)
+
 	def draw_svg(self, svg_string) -> None:
-		self.graphicsView.setGeometry(0,0, self.image_width, self.image_height)
+		self.gv.setGeometry(0,0, self.image_width, self.image_height)
 		svg_raw = bytearray(svg_string, encoding="utf-8")
-		svg_widget = QSvgWidget(self.graphicsView)
+		svg_widget = QSvgWidget(self.gv)
 		svg_widget.load(svg_raw)
 		svg_widget.show()
 
