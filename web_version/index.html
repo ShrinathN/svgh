@@ -13,6 +13,18 @@
 	<script>
 		var g = new RandomSvgGeneratorClass();
 
+		function svgToCanvas() {
+			var img = new Image();
+			img.onload = function () {
+				var canv = document.getElementById("svg_image2");
+				canv.width = Number(document.getElementById("width_input").value);
+				canv.height = Number(document.getElementById("height_input").value);
+				var ctx = canv.getContext("2d");
+				ctx.drawImage(img, 0, 0);
+			};
+			img.src = 'data:image/svg+xml;base64,' + window.btoa(g.return_image());
+		}
+
 		function genr() {
 			var svg_image = document.getElementById("svg_image");
 
@@ -31,13 +43,12 @@
 			g.set_elements(Number(document.getElementById("elements_number").value));
 			g.set_strokes(Number(document.getElementById("stroke_min").value), Number(document.getElementById("stroke_max").value));
 
-
 			g.generate_image();
-			svg_image.innerHTML = g.return_image();
+			svgToCanvas();
 		}
 
 		function save_img() {
-			g.save_image()
+			g.save_image();
 		}
 	</script>
 
@@ -49,9 +60,11 @@
 
 		<div class="row">
 			<div class="col">
-				<div id="svg_image" class="col-12 align-self-center">
+				<!-- <div id="svg_image" class="col-12 align-self-center">
 					<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1920" height="1080"></svg>
-				</div>
+				</div> -->
+				<canvas id="svg_image2" onclick="genr()" style="width:100%;height:auto">
+				</canvas>
 			</div>
 		</div>
 	</div>
@@ -125,7 +138,7 @@
 
 		<div class="row">
 			<div class="col">
-				<button class="btn btn-danger" onclick="save_img()">Save Image</button>
+				<button class="btn btn-danger" onclick="save_img()">Save Vector Image</button>
 			</div>
 		</div>
 

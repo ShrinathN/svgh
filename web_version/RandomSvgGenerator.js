@@ -60,54 +60,56 @@ class RandomSvgGeneratorClass {
 	generate_image() {
 		//setting header
 		this.set_header()
-		// adding background
-		this.__svg_data += this.__add_background_rectangle();
-		// adding element
-		for (var i = 0; i < this.elements_set; i++) {
-			if (this.random_checked) {
-				var choice = randint(0, 6);
-				if (choice == 0)
+		// we only need a single gradient
+		if (this.gradient_checked) {
+			this.__svg_data += this.__add_background_rectangle();
+			this.__svg_data += this.__add_random_gradient();
+		} else {
+			// adding background
+			this.__svg_data += this.__add_background_rectangle();
+			// adding element
+			for (var i = 0; i < this.elements_set; i++) {
+				if (this.random_checked) {
+					var choice = randint(0, 6);
+					if (choice == 0)
+						this.__svg_data += this.__add_random_rectangle()
+					else if (choice == 1)
+						this.__svg_data += this.__add_random_circle()
+					else if (choice == 2)
+						this.__svg_data += this.__add_random_ellipse()
+					else if (choice == 3)
+						this.__svg_data += this.__add_random_line()
+					else if (choice == 4)
+						this.__svg_data += this.__add_random_polygon()
+					else if (choice == 5)
+						this.__svg_data += this.__add_random_polyline()
+					else if (choice == 6)
+						this.__svg_data += this.__add_random_curve()
+				}
+
+
+				if (this.rectangle_checked)
 					this.__svg_data += this.__add_random_rectangle()
-				else if (choice == 1)
+
+				if (this.circle_checked)
 					this.__svg_data += this.__add_random_circle()
-				else if (choice == 2)
+
+				if (this.ellipse_checked)
 					this.__svg_data += this.__add_random_ellipse()
-				else if (choice == 3)
+
+				if (this.line_checked)
 					this.__svg_data += this.__add_random_line()
-				else if (choice == 4)
+
+				if (this.polygon_checked)
 					this.__svg_data += this.__add_random_polygon()
-				else if (choice == 5)
+
+				if (this.polyline_checked)
 					this.__svg_data += this.__add_random_polyline()
-				else if (choice == 6)
+
+				if (this.curve_checked)
 					this.__svg_data += this.__add_random_curve()
 			}
-
-
-			if (this.rectangle_checked)
-				this.__svg_data += this.__add_random_rectangle()
-
-			if (this.circle_checked)
-				this.__svg_data += this.__add_random_circle()
-
-			if (this.ellipse_checked)
-				this.__svg_data += this.__add_random_ellipse()
-
-			if (this.line_checked)
-				this.__svg_data += this.__add_random_line()
-
-			if (this.polygon_checked)
-				this.__svg_data += this.__add_random_polygon()
-
-			if (this.polyline_checked)
-				this.__svg_data += this.__add_random_polyline()
-
-			if (this.curve_checked)
-				this.__svg_data += this.__add_random_curve()
-
-			if (this.gradient_checked)
-				this.__svg_data += this.__add_random_gradient()
 		}
-
 		// adding ending
 		this.__svg_data += '</svg>';
 	}
