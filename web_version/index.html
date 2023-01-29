@@ -36,7 +36,9 @@
 			g.set_polygon_checked(document.getElementById("btnradio5").checked);
 			g.set_polyline_checked(document.getElementById("btnradio6").checked);
 			g.set_curve_checked(document.getElementById("btnradio7").checked);
+
 			g.set_gradient_checked(document.getElementById("btnradio8").checked);
+			g.set_solid_background(document.getElementById("btnradio9").checked);
 
 			g.set_width(Number(document.getElementById("width_input").value));
 			g.set_height(Number(document.getElementById("height_input").value));
@@ -123,12 +125,21 @@
 
 					<input type="radio" class="btn-check" name="btnradio" id="btnradio7" autocomplete="off">
 					<label class="btn btn-outline-primary" for="btnradio7">Curve</label>
-
-					<input type="radio" class="btn-check" name="btnradio" id="btnradio8" autocomplete="off">
-					<label class="btn btn-outline-primary" for="btnradio8">Gradient</label>
 				</div>
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col">
+				<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+					<input type="radio" class="btn-check" name="btnradio2" id="btnradio8" autocomplete="off">
+					<label class="btn btn-outline-primary" for="btnradio8">Gradient Background</label>
+					
+					<input type="radio" class="btn-check" name="btnradio2" id="btnradio9" autocomplete="off">
+					<label class="btn btn-outline-primary" for="btnradio9">Solid Background</label>
+				</div>
+			</div>
+
 
 		<div class="row">
 			<div class="col">
